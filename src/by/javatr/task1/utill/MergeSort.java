@@ -1,16 +1,8 @@
 package by.javatr.task1.utill;
 
-import by.javatr.task1.Array;
-
 final class MergeSort {
 
-    static void sort(Array arr) {
-        int[] value = arr.getValue();
-        ArrayValidator.validateNotNull(value);
-        doSort(value);
-    }
-
-    private static int[] doSort(int[] arrayA) {
+    static int[] sort(int[] arrayA) {
         if (arrayA.length < 2) {
             return arrayA;
         }
@@ -21,8 +13,8 @@ final class MergeSort {
         int[] arrayC = new int[arrayA.length - arrayA.length / 2];
         System.arraycopy(arrayA, arrayA.length / 2, arrayC, 0, arrayA.length - arrayA.length / 2);
 
-        arrayB = doSort(arrayB);
-        arrayC = doSort(arrayC);
+        arrayB = sort(arrayB);
+        arrayC = sort(arrayC);
 
         return mergeArray(arrayB, arrayC);
     }

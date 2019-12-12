@@ -1,4 +1,4 @@
-package by.javatr.task1.utill;
+package by.javatr.task1.valid;
 
 import by.javatr.task1.Array;
 

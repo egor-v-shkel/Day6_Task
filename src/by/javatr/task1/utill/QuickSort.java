@@ -1,14 +1,12 @@
 package by.javatr.task1.utill;
 
-import by.javatr.task1.Array;
-
 final class QuickSort {
 
-    static void sort(Array array) {
-        doSort(array.getValue(), 0, array.length());
+    static void sort(int[] array) {
+        sortInRange(array, 0, array.length-1);
     }
 
-    private static void doSort(int[] array, int low, int high) {
+    private static void sortInRange(int[] array, int low, int high) {
         if (array.length == 0) return;
 
         if (low >= high) return;
@@ -31,9 +29,9 @@ final class QuickSort {
             }
         }
 
-        if (low < j) doSort(array, low, j);
+        if (low < j) sortInRange(array, low, j);
 
-        if (high > i) doSort(array, i, high);
+        if (high > i) sortInRange(array, i, high);
 
     }
 }

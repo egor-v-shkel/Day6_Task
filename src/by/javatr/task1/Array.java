@@ -1,16 +1,20 @@
 package by.javatr.task1;
 
-import by.javatr.task1.utill.ArrayValidator;
+import by.javatr.task1.valid.ArrayValidator;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Array implements Cloneable {
 
     int[] value;
 
-    /*public Array() {
-        this.value = new int[]{};
-    }*/
+    public Array(List<Integer> list) {
+        int listSize = list.size();
+        this.value = new int[listSize];
+        for (int i = 0; i < listSize; i++) {
+            value[i] = list.get(i);
+        }
+    }
 
     public Array(int... arr) {
         this.value = arr;
@@ -84,7 +88,24 @@ public class Array implements Cloneable {
     @Override
     public String toString() {
         return getClass().getName() + "{" +
-                "value=" + Arrays.toString(value) +
+                "value=" + arrToStr(value) +
                 '}';
+    }
+
+    private static String arrToStr(int[] arr){
+        if (arr == null)
+            return "null";
+        int iMax = arr.length - 1;
+        if (iMax == -1)
+            return "[]";
+
+        StringBuilder builder = new StringBuilder();
+        builder.append('[');
+        for (int i = 0; ; i++) {
+            builder.append(arr[i]);
+            if (i == iMax)
+                return builder.append(']').toString();
+            builder.append(", ");
+        }
     }
 }

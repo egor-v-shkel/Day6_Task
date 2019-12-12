@@ -1,6 +1,6 @@
 package by.javatr.task1.utill;
 
-public class BinarySarch {
+public class BinarySearch {
 
     private static int binarySearch0(int[] a, int fromIndex, int toIndex,
                                      int key) {
