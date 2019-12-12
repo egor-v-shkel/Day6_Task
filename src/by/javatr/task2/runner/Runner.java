@@ -1,7 +1,6 @@
 package by.javatr.task2.runner;
 
 import by.javatr.task2.util.Sort;
-import print.PrintToConsole;
 
 import java.util.Arrays;
 
@@ -25,26 +24,26 @@ public class Runner {
 		
 		//упорядочить строки матрицы: в порядке возрастания сумм элементов строк матрицы;
 		int[] arrayOfSums = Sort.bubbleSortSumsOfRowElementsDecr(jaggedArray);
-		PrintToConsole.println(Arrays.toString(arrayOfSums));	
+		System.out.println(Arrays.toString(arrayOfSums));
 		
 		//упорядочить строки матрицы: в порядке убывания максимальных элементов строк матрицы;
 		arrayOfSums = Sort.bubbleSortSumsOfRowElementsInc(jaggedArray);
-		PrintToConsole.println(Arrays.toString(arrayOfSums));
+		System.out.println(Arrays.toString(arrayOfSums));
 		
 		//упорядочить строки матрицы: в порядке возрастания  максимальных элементов строк матрицы;
 		int[] arrayOfMaxElements = Sort.bubbleSortMaxElementsDecr(jaggedArray);
-		PrintToConsole.println(Arrays.toString(arrayOfMaxElements));
+		System.out.println(Arrays.toString(arrayOfMaxElements));
 		
 		//упорядочить строки матрицы: в порядке убывания максимальных элементов строк матрицы;
 		arrayOfMaxElements = Sort.bubbleSortMaxElementsInc(jaggedArray);
-		PrintToConsole.println(Arrays.toString(arrayOfMaxElements));
+		System.out.println(Arrays.toString(arrayOfMaxElements));
 		
 		//упорядочить строки матрицы: в порядке возрастания минимальных элементов строк матрицы;
 		int[] arrayOfMinElements = Sort.bubbleSortMinElementsDecr(jaggedArray);
-		PrintToConsole.println(Arrays.toString(arrayOfMinElements));
+		System.out.println(Arrays.toString(arrayOfMinElements));
 				
 		//упорядочить строки матрицы: в порядке убывания минимальных элементов строк матрицы;
 		arrayOfMinElements = Sort.bubbleSortMinElementsInc(jaggedArray);
-		PrintToConsole.println(Arrays.toString(arrayOfMinElements));
+		System.out.println(Arrays.toString(arrayOfMinElements));
 	}
 }
