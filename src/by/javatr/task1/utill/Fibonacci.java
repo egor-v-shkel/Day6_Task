@@ -1,11 +1,12 @@
 package by.javatr.task1.utill;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Fibonacci {
 
-    public static ArrayList of(int[] array) {
-        ArrayList fibList = new ArrayList();
+    public static List<Integer> of(int[] array) {
+        List<Integer> fibList = new ArrayList<>();
 
         for (int elem : array) {
             if (isFib(elem)) {

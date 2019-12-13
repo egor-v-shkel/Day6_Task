@@ -5,7 +5,7 @@ public class BinarySearch {
     public static int binarySearch(int[] a, int fromIndex, int toIndex,
                                      int key) {
         int low = fromIndex;
-        int high = toIndex - 1;
+        int high = toIndex;
 
         while (low <= high) {
             int mid = (low + high) >>> 1;
