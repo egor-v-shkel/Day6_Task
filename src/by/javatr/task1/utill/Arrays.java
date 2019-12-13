@@ -5,6 +5,7 @@ import by.javatr.task1.Exceptions.ReadFileException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Arrays {
 
@@ -26,13 +27,12 @@ public class Arrays {
         BubbleSort.sort(arrayToSort);
     }
 
-    public static int binarySearch(Array array, int element){
+    public static int binarySearch(Array array, int element) {
         int[] value = array.value;
         int length = value.length;
-        return BinarySearch.binarySearch(value,0, length element);
+        return BinarySearch.binarySearch(value, 0, length - 1, element);
     }
 
-    //TODO check method logic
     public static int getMaxElement(Array arr) {
         try {
             Array clone = arr.clone();
@@ -42,7 +42,8 @@ public class Arrays {
         }
 
         int lastIndex = arr.length() - 1;
-        return (lastIndex >= 0) ? arr.getElementAt(lastIndex) : null;
+        if (lastIndex < 0 ) throw new IllegalArgumentException("Incorrect array.");
+        return arr.getElementAt(lastIndex);
     }
 
     public static int getMinElement(Array arr) {
@@ -56,13 +57,13 @@ public class Arrays {
         return arr.getElementAt(0);
     }
 
-    public static ArrayList getFibList(Array array) {
+    public static List<Integer> getFibList(Array array) {
         int[] srcArray = array.getValue();
         return Fibonacci.of(srcArray);
     }
 
     public static List<Integer> getPrimeList(Array array) {
-        List<Integer> arrayList = new ArrayList();
+        List<Integer> arrayList = new ArrayList<>();
         int[] value = array.getValue();
 
         for (int element :
@@ -87,7 +88,7 @@ public class Arrays {
         return intList;
     }
 
-    public static Array getAarrayFromConsole(){
+    public static Array getArrayFromConsole() {
         int[] ints = DataScanner.enterIntArrayFromConsole();
 
         return new Array(ints);
@@ -98,15 +99,12 @@ public class Arrays {
         return new Array(list);
     }
 
-    public static Array getRandomArray(){
-        int min = 0;
-        int max = Integer.MAX_VALUE;
-        int arrayLength = RandomInt.get(min, max);
+    public static Array getRandomArray(int size) {
+        Random rnd = new Random();
 
-        int[]arr = new int[arrayLength];
-        for (int element:
-             arr) {
-            element = RandomInt.get(min, max);
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = rnd.nextInt();
         }
 
         return new Array(arr);

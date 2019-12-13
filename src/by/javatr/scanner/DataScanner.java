@@ -47,7 +47,7 @@ public class DataScanner {
     public static String readFile(String path) throws ReadFileException {
         File file = new File(path);
         StringBuilder sb = new StringBuilder();
-        Scanner sc = null;
+        Scanner sc;
         try {
             sc = new Scanner(file);
         } catch (FileNotFoundException e) {
@@ -74,11 +74,15 @@ public class DataScanner {
 
         if (!contentMatch) throw new ParseArrayException("String don't meet array pattern requirements.");
 
-        Scanner sc = new Scanner(content);
         List<Integer> lst = new ArrayList<>();
 
-        while (sc.hasNextInt()){
-            lst.add(sc.nextInt());
+        String[] split = content
+                .replaceAll("[\\[\\]]", "")
+                .split(", ");
+
+        for (String str :
+                split) {
+            lst.add(Integer.parseInt(str));
         }
 
         return lst;
