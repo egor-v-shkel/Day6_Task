@@ -4,27 +4,28 @@ import by.javatr.task3.valid.TextValidator;
 
 public class RegExLogic {
 
-    private RegExLogic() {}
+    private RegExLogic() {
+    }
 
-    public static String charReplace(String word, int k, char c){
+    public static String charReplace(String word, int k, char c) {
         TextValidator.validateStringArg(word);
         StringBuilder sb = new StringBuilder(word);
-        String pattern = String.format("\\d{%d}", k);
+        String pattern = String.format("[a-zA-Z]{%d}", k);
 
-        if (word.matches(pattern)) sb.setCharAt(k, c);
+        if (word.matches(pattern)) sb.setCharAt(k-1, c);
         return sb.toString();
     }
 
-    public static String correctChar(String strToReplace){
-        TextValidator.validateStringArg(strToReplace);
+    public static String correctChar(String word) {
+        TextValidator.validateStringArg(word);
 
-        return strToReplace.replaceAll("PA", "PO");
+        return word.replaceAll("PA", "PO");
     }
 
-    public static String stringReplace(String word, int length, String substring){
+    public static String stringReplace(String word, int length, String substring) {
         TextValidator.validateStringArg(word);
         StringBuilder sb = new StringBuilder(word);
-        String pattern = String.format("\\d{%d}", length);
+        String pattern = String.format("[a-zA-z]{%d}", length);
 
         if (word.matches(pattern)) sb = new StringBuilder(substring);
         return sb.toString();
@@ -32,12 +33,12 @@ public class RegExLogic {
 
     public static String symbolsDelete(String text) {
         return text
-                .replaceAll("([^a-zA-Z]+)"," ")
+                .replaceAll("([^a-zA-Z]+)", " ")
                 .trim();
     }
 
     public static String deleteFirstConsonant(String word, int length) {
-        String pattern = String.format("[b-df-hj-np-tv-z][a-zA-z]{%d}", length-1);
+        String pattern = String.format("[b-df-hj-np-tv-z][a-zA-z]{%d}", length - 1);
 
         return word.replaceAll(pattern, "");
     }

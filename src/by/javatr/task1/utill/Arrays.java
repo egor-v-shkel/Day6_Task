@@ -1,9 +1,8 @@
 package by.javatr.task1.utill;
 
-import by.javatr.Scanner.DataScanner;
+import by.javatr.scanner.DataScanner;
 import by.javatr.task1.Array;
 import by.javatr.task1.Exceptions.ReadFileException;
-import by.javatr.task1.valid.ArraysValidator;
 
 import java.util.ArrayList;
 import java.util.List;

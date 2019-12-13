@@ -7,6 +7,9 @@ import java.util.List;
 
 public class StringBuilderLogic {
 
+    private StringBuilderLogic() {
+    }
+
     public static String charReplace(String word, int k, char c) {
         TextValidator.validateStringArg(word);
 
@@ -86,7 +89,7 @@ public class StringBuilderLogic {
             case 'O':
             case 'U':
                 stat = false;
-            break;
+                break;
             default:
                 stat = true;
         }
