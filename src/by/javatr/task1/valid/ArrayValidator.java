@@ -1,6 +1,6 @@
 package by.javatr.task1.valid;
 
-import by.javatr.task1.Array;
+import by.javatr.task1.utill.Array;
 
 public class ArrayValidator {
 

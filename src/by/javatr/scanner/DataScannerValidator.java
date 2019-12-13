@@ -1,4 +1,4 @@
-package by.javatr.task1.valid;
+package by.javatr.scanner;
 
 public class DataScannerValidator {
     public static boolean inputIsArray(String input) {

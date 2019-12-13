@@ -26,17 +26,17 @@ final class MergeSort {
 
         for (int i = 0; i < arrayC.length; i++) {
             if (positionA == arrayA.length) {
-                arrayC[i] = arrayB[i - positionB];
+                arrayC[i] = arrayB[positionB];
                 positionB++;
             } else if (positionB == arrayB.length) {
-                arrayC[i] = arrayA[i - positionA];
+                arrayC[i] = arrayA[positionA];
                 positionA++;
-            } else if (arrayA[i - positionA] < arrayB[i - positionB]) {
-                arrayC[i] = arrayA[i - positionA];
-                positionB++;
+            } else if (arrayA[positionA] < arrayB[positionB]) {
+                arrayC[i] = arrayA[positionA];
+                positionA++;
             } else {
-                arrayC[i] = arrayB[i - positionB];
-                positionA++;
+                arrayC[i] = arrayB[positionB];
+                positionB++;
             }
         }
         return arrayC;

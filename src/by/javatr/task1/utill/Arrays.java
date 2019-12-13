@@ -1,7 +1,6 @@
 package by.javatr.task1.utill;
 
 import by.javatr.scanner.DataScanner;
-import by.javatr.task1.Array;
 import by.javatr.task1.Exceptions.ReadFileException;
 
 import java.util.ArrayList;
@@ -25,6 +24,12 @@ public class Arrays {
     public static void bubleSort(Array array) {
         int[] arrayToSort = array.getValue();
         BubbleSort.sort(arrayToSort);
+    }
+
+    public static int binarySearch(Array array, int element){
+        int[] value = array.value;
+        int length = value.length;
+        return BinarySearch.binarySearch(value,0, length element);
     }
 
     //TODO check method logic

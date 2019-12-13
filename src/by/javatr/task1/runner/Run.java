@@ -1,38 +1,34 @@
 package by.javatr.task1.runner;
 
-import by.javatr.task1.Array;
+import by.javatr.task1.utill.Array;
+import by.javatr.task1.utill.Arrays;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Run {
 
     public static void main(String[] args) {
-        /*int[] arr = {1, 2, 3};
-        arr.clone();
-        Array array = new Array(arr);
+        int[] ints1 = {556, 22, 123, 6, 812, 6, 7};
+        List<Integer> list = new ArrayList<>();
+        list.add(86);
+        list.add(64);
+        list.add(1);
+        list.add(7);
+        int[] ints2 = {5, 9, 99, 1, 568} ;
 
-        System.out.println(array.length());
+        Array myArray1 = new Array(ints1);
+        Array myArray2 = new Array(list);
+        Array myArray3 = new Array(ints2);
 
-        Array clone = null;
+        Arrays.quickSort(myArray1);
+        System.out.println(myArray1.toString());
+        Arrays.mergeSort(myArray2);
+        System.out.println(myArray2.toString());
+        Arrays.bubleSort(myArray3);
+        System.out.println(myArray3.toString());
 
-        try {
-            clone = array.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(Arrays.toString(clone.getValue()));
-        System.out.println(clone.getElementAt(1));
-
-        Array array1 = new Array();
-        System.out.println(array1.getElementAt(3));*/
-
-        /*Array array = new Array(null);
-        int length = array.length();
-        System.out.println(length);*/
-
-        int[] arr = new int[]{};
-        int i = arr[3];
-        System.out.println(i);
+        Arrays.
     }
 
 }

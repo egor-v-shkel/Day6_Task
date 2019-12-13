@@ -1,4 +1,4 @@
-package by.javatr.task1;
+package by.javatr.task1.utill;
 
 import by.javatr.task1.valid.ArrayValidator;
 
@@ -57,16 +57,16 @@ public class Array implements Cloneable {
         if (o == null || getClass() != o.getClass()) return false;
         Array array = (Array) o;
 
-        if (value==array.value)
+        if (value == array.value)
             return true;
-        if (value==null || array.value==null)
+        if (value == null || array.value == null)
             return false;
 
         int length = value.length;
         if (array.value.length != length)
             return false;
 
-        for (int i=0; i<length; i++)
+        for (int i = 0; i < length; i++)
             if (value[i] != array.value[i])
                 return false;
 
@@ -92,7 +92,7 @@ public class Array implements Cloneable {
                 '}';
     }
 
-    private static String arrToStr(int[] arr){
+    private static String arrToStr(int[] arr) {
         if (arr == null)
             return "null";
         int iMax = arr.length - 1;
