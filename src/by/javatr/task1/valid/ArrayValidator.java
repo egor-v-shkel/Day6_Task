@@ -8,16 +8,11 @@ public class ArrayValidator {
     }
 
     public static void validateIndex(Array arr, int index) throws ArrayIndexOutOfBoundsException {
-
         if (index > arr.length() - 1 && index < 0)
             throw new ArrayIndexOutOfBoundsException(index);
     }
 
-    public static void validateNotNull(int[] arr) throws NullPointerException {
-        if (arr == null) throw new NullPointerException();
-    }
-
-    public static void validateNotNull(Array arr) throws NullPointerException {
-        validateNotNull(arr.getValue());
+    public static void validateNotNull(Object object) throws IllegalArgumentException {
+        if (object == null) throw new IllegalArgumentException("Can't pass null as a parameter.");
     }
 }

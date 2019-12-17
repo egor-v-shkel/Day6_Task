@@ -2,8 +2,11 @@ package by.javatr.task1.utill;
 
 public class BinarySearch {
 
+    private BinarySearch() {
+    }
+
     public static int binarySearch(int[] a, int fromIndex, int toIndex,
-                                     int key) {
+                                   int key) {
         int low = fromIndex;
         int high = toIndex;
 

@@ -16,8 +16,8 @@ public class StringBuilderLogic {
         StringBuilder sb = new StringBuilder(word);
         int length = sb.length();
 
-        if (length > k) {
-            sb.setCharAt(k, c);
+        if (k <= length) {
+            sb.setCharAt(k-1, c);
         }
         return sb.toString();
     }
@@ -28,8 +28,8 @@ public class StringBuilderLogic {
         StringBuilder sb = new StringBuilder(word);
 
         for (int i = 0; i < word.length() - 2; i++) {
-            if (word.charAt(i) == 'P' && word.charAt(i + 1) == 'O')
-                sb.setCharAt(i, 'A');
+            if (word.charAt(i) == 'P' && word.charAt(i + 1) == 'A')
+                sb.setCharAt(i+1, 'O');
         }
 
         return sb.toString();
@@ -47,17 +47,20 @@ public class StringBuilderLogic {
     public static String symbolsDelete(String text) {
         TextValidator.validateStringArg(text);
 
-        StringBuilder sb = new StringBuilder();
-        List<StringBuilder> sbList = new ArrayList<>();
-
-        while (!Character.isLetter(sb.charAt(0))) {
-            sb.deleteCharAt(0);
-        }
+        StringBuilder sb = new StringBuilder(text);
 
         for (int i = 0; i < sb.length(); i++) {
-            if (!Character.isLetter(sb.charAt(i))
-                    && !Character.isWhitespace(sb.charAt(i))) {
-                sb.setCharAt(i, ' ');
+            if (!Character.isLetter(sb.charAt(i))){
+                int intOffsetIndex = -1;
+                for (int j = i; j < sb.length(); j++) {
+                    if (Character.isLetter(sb.charAt(j))) {
+                        intOffsetIndex = j;
+                        break;
+                    }
+                }
+                if (intOffsetIndex > -1)sb.replace(i, intOffsetIndex, " ");
+                else sb.delete(i, sb.length());
+                i++;
             }
         }
         return sb.toString();
@@ -69,12 +72,12 @@ public class StringBuilderLogic {
 
         StringBuilder sb = new StringBuilder(word);
 
-        char firstChar = word.charAt(0);
-        if (word.length() != length || word.length() == 0 || isConsonant(firstChar)) return sb.toString();
-        return sb.deleteCharAt(0).toString();
+        char firstChar = Character.toLowerCase(word.charAt(0));
+        if (word.length() != length || isVowel(firstChar)) return sb.toString();
+        return "";
     }
 
-    private static boolean isConsonant(char c) {
+    private static boolean isVowel(char c) {
         boolean stat;
 
         switch (c) {
@@ -83,15 +86,10 @@ public class StringBuilderLogic {
             case 'i':
             case 'o':
             case 'u':
-            case 'A':
-            case 'E':
-            case 'I':
-            case 'O':
-            case 'U':
-                stat = false;
+                stat = true;
                 break;
             default:
-                stat = true;
+                stat = false;
         }
 
         return stat;

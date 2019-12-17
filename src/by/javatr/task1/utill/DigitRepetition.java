@@ -5,6 +5,9 @@ import java.util.TreeSet;
 
 public class DigitRepetition {
 
+    private DigitRepetition() {
+    }
+
     public static boolean hasNoRepetitions(int num) {
 
         Set<Integer> numDigitsSet = new TreeSet<>();

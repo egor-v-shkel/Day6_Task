@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Fibonacci {
 
+    private Fibonacci() {
+    }
+
     public static List<Integer> of(int[] array) {
         List<Integer> fibList = new ArrayList<>();
 

@@ -2,6 +2,9 @@ package by.javatr.task1.utill;
 
 final class QuickSort {
 
+    private QuickSort() {
+    }
+
     static void sort(int[] array) {
         sortInRange(array, 0, array.length-1);
     }

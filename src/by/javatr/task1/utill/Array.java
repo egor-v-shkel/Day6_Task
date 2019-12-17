@@ -9,6 +9,8 @@ public class Array implements Cloneable {
     int[] value;
 
     public Array(List<Integer> list) {
+        ArrayValidator.validateNotNull(list);
+
         int listSize = list.size();
         this.value = new int[listSize];
         for (int i = 0; i < listSize; i++) {
@@ -17,6 +19,8 @@ public class Array implements Cloneable {
     }
 
     public Array(int... arr) {
+        ArrayValidator.validateNotNull(arr);
+
         this.value = arr;
     }
 
@@ -26,6 +30,7 @@ public class Array implements Cloneable {
 
     public void setValue(int[] value) {
         ArrayValidator.validateNotNull(value);
+
         this.value = value;
     }
 
@@ -39,7 +44,6 @@ public class Array implements Cloneable {
     }
 
     public int getElementAt(int index) {
-        ArrayValidator.validateNotNull(this);
         ArrayValidator.validateIndex(this, index);
 
         return value[index];
@@ -93,8 +97,6 @@ public class Array implements Cloneable {
     }
 
     private static String arrToStr(int[] arr) {
-        if (arr == null)
-            return "null";
         int iMax = arr.length - 1;
         if (iMax == -1)
             return "[]";

@@ -10,9 +10,9 @@ public class RegExLogic {
     public static String charReplace(String word, int k, char c) {
         TextValidator.validateStringArg(word);
         StringBuilder sb = new StringBuilder(word);
-        String pattern = String.format("[a-zA-Z]{%d}", k);
+        String pattern = String.format("[a-zA-Z]{%d,}", k);
 
-        if (word.matches(pattern)) sb.setCharAt(k-1, c);
+        if (word.matches(pattern)) sb.setCharAt(k - 1, c);
         return sb.toString();
     }
 
@@ -25,7 +25,7 @@ public class RegExLogic {
     public static String stringReplace(String word, int length, String substring) {
         TextValidator.validateStringArg(word);
         StringBuilder sb = new StringBuilder(word);
-        String pattern = String.format("[a-zA-z]{%d}", length);
+        String pattern = String.format("[a-zA-Z]{%d}", length);
 
         if (word.matches(pattern)) sb = new StringBuilder(substring);
         return sb.toString();
@@ -38,8 +38,10 @@ public class RegExLogic {
     }
 
     public static String deleteFirstConsonant(String word, int length) {
-        String pattern = String.format("[b-df-hj-np-tv-z][a-zA-z]{%d}", length - 1);
+        String pattern = String.format("^[^aeiou][a-zA-Z]{%d}$", length - 1);
 
-        return word.replaceAll(pattern, "");
+        return word.toLowerCase().matches(pattern) ?
+                "" :
+                word;
     }
 }

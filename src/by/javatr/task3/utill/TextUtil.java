@@ -22,20 +22,23 @@ public class TextUtil {
         currentEngine = engine;
     }
 
-    public static String replace(String text, int index, char c, Engine engine) {
+    public static String replace(String text, int index, char c) {
         StringBuilder sb = new StringBuilder();
         String[] split = split(text);
 
         for (String str :
                 split) {
-            if (str.matches("[a-zA-z]+")) {
-                if (currentEngine == Engine.REGEX) {
-                    String replace = RegExLogic.charReplace(str, index, c);
-                    sb.append(replace);
-                } else {
-                    String replace = StringBuilderLogic.charReplace(str, index, c);
-                    sb.append(replace);
+            if (str.matches("[a-zA-Z]+")) {
+                String replace = null;
+                switch (currentEngine) {
+                    case REGEX:
+                        replace = RegExLogic.charReplace(str, index, c);
+                        break;
+                    case STRING_BUILDER:
+                        replace = StringBuilderLogic.charReplace(str, index, c);
+                        break;
                 }
+                sb.append(replace);
             } else sb.append(str);
         }
         return sb.toString();
@@ -47,14 +50,17 @@ public class TextUtil {
 
         for (String str :
                 split) {
-            if (str.matches("[a-zA-z]+")) {
-                if (currentEngine == Engine.REGEX) {
-                    String replace = RegExLogic.correctChar(str);
-                    sb.append(replace);
-                } else {
-                    String replace = StringBuilderLogic.correctChar(str);
-                    sb.append(replace);
+            if (str.matches("[a-zA-Z]+")) {
+                String replace = null;
+                switch (currentEngine) {
+                    case REGEX:
+                        replace = RegExLogic.correctChar(str);
+                        break;
+                    case STRING_BUILDER:
+                        replace = StringBuilderLogic.correctChar(str);
+                        break;
                 }
+                sb.append(replace);
             } else sb.append(str);
         }
         return sb.toString();
@@ -66,22 +72,25 @@ public class TextUtil {
 
         for (String str :
                 split) {
-            if (str.matches("[a-zA-z]+")) {
-                if (currentEngine == Engine.REGEX) {
-                    String replace = RegExLogic.stringReplace(str, length, replaceWord);
-                    sb.append(replace);
-                } else {
-                    String replace = StringBuilderLogic.stringReplace(str, length, replaceWord);
-                    sb.append(replace);
+            if (str.matches("[a-zA-Z]+")) {
+                String replace = null;
+                switch (currentEngine) {
+                    case REGEX:
+                        replace = RegExLogic.stringReplace(str, length, replaceWord);
+                        break;
+                    case STRING_BUILDER:
+                        replace = StringBuilderLogic.stringReplace(str, length, replaceWord);
+                        break;
                 }
+                sb.append(replace);
             } else sb.append(str);
         }
         return sb.toString();
     }
 
     public static String symbolDelete(String text) {
-        return  (currentEngine == Engine.REGEX) ?
-                RegExLogic.symbolsDelete(text):
+        return (currentEngine == Engine.REGEX) ?
+                RegExLogic.symbolsDelete(text) :
                 StringBuilderLogic.symbolsDelete(text);
     }
 
@@ -91,20 +100,23 @@ public class TextUtil {
 
         for (String str :
                 split) {
-            if (str.matches("[a-zA-z]+")) {
-                if (currentEngine == Engine.REGEX) {
-                    String replace = RegExLogic.deleteFirstConsonant(str, length);
-                    sb.append(replace);
-                } else {
-                    String replace = StringBuilderLogic.deleteFirstConsonant(str, length);
-                    sb.append(replace);
+            if (str.matches("[a-zA-Z]+")) {
+                String replace = null;
+                switch (currentEngine) {
+                    case REGEX:
+                        replace = RegExLogic.deleteFirstConsonant(str, length);
+                        break;
+                    case STRING_BUILDER:
+                        replace = StringBuilderLogic.deleteFirstConsonant(str, length);
+                        break;
                 }
+                sb.append(replace);
             } else sb.append(str);
         }
         return sb.toString();
     }
 
     private static String[] split(String text) {
-        return text.split("(?=[\\., <])|(?<=[\\., <])");
+        return text.split("(?=[., <])|(?<=[., <])");
     }
 }
