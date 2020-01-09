@@ -1,7 +1,7 @@
 package by.javatr.scanner;
 
-import by.javatr.task1.Exceptions.ParseArrayException;
-import by.javatr.task1.Exceptions.ReadFileException;
+import by.javatr.task1.exceptions.ParseArrayException;
+import by.javatr.task1.exceptions.ReadFileException;
 
 import java.io.File;
 import java.io.FileNotFoundException;

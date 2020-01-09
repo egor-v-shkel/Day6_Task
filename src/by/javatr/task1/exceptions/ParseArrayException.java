@@ -1,4 +1,4 @@
-package by.javatr.task1.Exceptions;
+package by.javatr.task1.exceptions;
 
 public class ParseArrayException extends RuntimeException {
 

@@ -2,8 +2,7 @@ package by.javatr.task1.utill;
 
 public class PrimeNum {
 
-    private PrimeNum() {
-    }
+    private PrimeNum() {}
 
     public static boolean isPrime(int n) {
         if (n <= 1) {

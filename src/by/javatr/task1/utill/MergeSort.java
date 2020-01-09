@@ -2,8 +2,7 @@ package by.javatr.task1.utill;
 
 final class MergeSort {
 
-    private MergeSort() {
-    }
+    private MergeSort() {}
 
     static int[] sort(int[] arrayA) {
         if (arrayA.length < 2) {

@@ -1,6 +1,6 @@
 package by.javatr.task1.utill;
 
-import by.javatr.task1.valid.ArrayValidator;
+import by.javatr.task1.valid.Validator;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class Array implements Cloneable {
     int[] value;
 
     public Array(List<Integer> list) {
-        ArrayValidator.validateNotNull(list);
+        Validator.parameter(list);
 
         int listSize = list.size();
         this.value = new int[listSize];
@@ -19,17 +19,17 @@ public class Array implements Cloneable {
     }
 
     public Array(int... arr) {
-        ArrayValidator.validateNotNull(arr);
+        Validator.parameter(arr);
 
         this.value = arr;
     }
 
-    public int[] getValue() {
-        return value;
+    public int[] cloneValue() {
+        return value.clone();
     }
 
     public void setValue(int[] value) {
-        ArrayValidator.validateNotNull(value);
+        Validator.parameter(value);
 
         this.value = value;
     }
@@ -40,17 +40,17 @@ public class Array implements Cloneable {
 
     @Override
     public Array clone() throws CloneNotSupportedException {
-        return (Array) super.clone();
+        return new Array(cloneValue());
     }
 
     public int getElementAt(int index) {
-        ArrayValidator.validateIndex(this, index);
+        Validator.index(this, index);
 
         return value[index];
     }
 
     public void setElementAt(int index, int value) {
-        ArrayValidator.validateIndex(this, index);
+        Validator.index(this, index);
 
         this.value[index] = value;
     }
@@ -92,19 +92,19 @@ public class Array implements Cloneable {
     @Override
     public String toString() {
         return getClass().getName() + "{" +
-                "value=" + arrToStr(value) +
+                "value=" + valueToSting() +
                 '}';
     }
 
-    private static String arrToStr(int[] arr) {
-        int iMax = arr.length - 1;
+    private String valueToSting() {
+        int iMax = value.length - 1;
         if (iMax == -1)
             return "[]";
 
         StringBuilder builder = new StringBuilder();
         builder.append('[');
         for (int i = 0; ; i++) {
-            builder.append(arr[i]);
+            builder.append(value[i]);
             if (i == iMax)
                 return builder.append(']').toString();
             builder.append(", ");

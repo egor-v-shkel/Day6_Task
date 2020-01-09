@@ -1,6 +1,6 @@
 package by.javatr.task1.runner;
 
-import by.javatr.task1.Exceptions.ReadFileException;
+import by.javatr.task1.exceptions.ReadFileException;
 import by.javatr.task1.utill.Array;
 import by.javatr.task1.utill.Arrays;
 

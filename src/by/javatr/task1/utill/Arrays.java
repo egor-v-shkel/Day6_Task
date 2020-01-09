@@ -1,50 +1,48 @@
 package by.javatr.task1.utill;
 
 import by.javatr.scanner.DataScanner;
-import by.javatr.task1.Exceptions.ReadFileException;
-import by.javatr.task1.valid.ArraysValidator;
-import com.sun.istack.internal.NotNull;
+import by.javatr.task1.exceptions.ReadFileException;
+import by.javatr.task1.valid.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Arrays {
 
-    private Arrays() {
-    }
+    private Arrays() {}
 
     public static void quickSort(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
-        int[] arrayToSort = array.getValue();
+        int[] arrayToSort = array.cloneValue();
         QuickSort.sort(arrayToSort);
     }
 
     public static void mergeSort(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
-        int[] arrayToSort = array.getValue();
+        int[] arrayToSort = array.cloneValue();
         MergeSort.sort(arrayToSort);
     }
 
     public static void bubbleSort(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
-        int[] arrayToSort = array.getValue();
+        int[] arrayToSort = array.cloneValue();
         BubbleSort.sort(arrayToSort);
     }
 
     public static int binarySearch(Array array, int element) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
         int[] value = array.value;
         int length = value.length;
         return BinarySearch.binarySearch(value, 0, length - 1, element);
     }
 
+
     public static int getMaxElement(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
         try {
             Array clone = array.clone();
@@ -59,7 +57,7 @@ public class Arrays {
     }
 
     public static int getMinElement(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
         try {
             Array clone = array.clone();
@@ -72,17 +70,17 @@ public class Arrays {
     }
 
     public static List<Integer> getFibList(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
-        int[] srcArray = array.getValue();
+        int[] srcArray = array.cloneValue();
         return Fibonacci.of(srcArray);
     }
 
     public static List<Integer> getPrimeList(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
         List<Integer> arrayList = new ArrayList<>();
-        int[] value = array.getValue();
+        int[] value = array.cloneValue();
 
         for (int element :
                 value) {
@@ -93,10 +91,10 @@ public class Arrays {
     }
 
     public static List<Integer> getThreeDigitsNumRepetitionList(Array array) {
-        ArraysValidator.validateNotNull(array);
+        Validator.parameter(array);
 
         List<Integer> intList = new ArrayList<>();
-        int[] value = array.getValue();
+        int[] value = array.cloneValue();
 
         for (int element :
                 value) {
@@ -115,7 +113,7 @@ public class Arrays {
     }
 
     public static Array getArrayFromFile(String path) throws ReadFileException {
-        ArraysValidator.validateNotNull(path);
+        Validator.parameter(path);
 
         List<Integer> list = DataScanner.enterIntArrayFromFile(path);
         return new Array(list);

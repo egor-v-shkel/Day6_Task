@@ -1,31 +1,30 @@
 package by.javatr.task2.util;
 
 import by.javatr.task2.Validators.BubbleSortValidator;
+import by.javatr.task2.function.JaggedBiFunction;
+import by.javatr.task2.function.JaggedFunction;
+import by.javatr.task2.function.impl.Ascending;
+import by.javatr.task2.function.impl.Summ;
 
 public class BubbleSort {
 
-    public enum Order{ASCENDING, DESCENDING}
-
     //default method
-    public static void sort(int[][] array){
-        sort(array, Condition.ELEMENTS_SUM, Order.ASCENDING);
+    public static void sort(int[][] array) {
+        sort(array, new Summ(), new Ascending());
     }
 
-    public static void sort(int[][] array, Condition sortCondition, Order order) {
-        BubbleSortValidator.validateNotNull(array);
+    public static void sort(int[][] array, JaggedFunction sortCondition, JaggedBiFunction order) {
+        if (array == null || sortCondition == null || order == null)
+            throw new IllegalArgumentException("Can't pass null as a parameter.");
 
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (order == Order.ASCENDING) {
-                    if (sortCondition.apply(array[j]) > sortCondition.apply(array[j + 1])) {
-                        swap(array, j, j + 1);
-                    }
-                } else {
-                    if (sortCondition.apply(array[j]) < sortCondition.apply(array[j + 1])) {
-                        swap(array, j, j + 1);
-                    }
-                }
+                int result1 = sortCondition.apply(array[j]);
+                int result2 = sortCondition.apply(array[j + 1]);
 
+                if (order.apply(result1, result2)) {
+                    swap(array, j, j + 1);
+                }
             }
         }
     }

@@ -2,8 +2,7 @@ package by.javatr.task1.utill;
 
 final class BubbleSort {
 
-    private BubbleSort() {
-    }
+    private BubbleSort() {}
 
     public static void sort(int[] arr) {
         int n = arr.length;
